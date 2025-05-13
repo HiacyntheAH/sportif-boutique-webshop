@@ -18,6 +18,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             src={product.image} 
             alt={product.name}
             className="product-image object-cover w-full h-full"
+            loading="lazy"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              console.error(`Error loading image: ${target.src}`);
+              // Fallback to placeholder if image fails to load
+              target.src = "https://placehold.co/400x400/e2e8f0/64748b?text=Image+non+disponible";
+            }}
           />
         </AspectRatio>
       </Link>
