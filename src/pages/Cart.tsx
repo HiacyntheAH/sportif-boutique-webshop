@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 import CartItem from '../components/CartItem';
 import { Product, getProductById } from '../data/products';
 import { ShoppingBag, ChevronRight } from 'lucide-react';
@@ -60,9 +59,8 @@ const Cart: React.FC = () => {
   const total = subtotal + shippingCost;
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow py-10">
+    <Layout>
+      <div className="py-10">
         <div className="sport-container">
           <h1 className="text-3xl font-bold mb-8">Votre Panier</h1>
           
@@ -129,9 +127,8 @@ const Cart: React.FC = () => {
             </div>
           )}
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   );
 };
 

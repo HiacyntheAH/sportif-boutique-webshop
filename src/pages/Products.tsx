@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 import ProductCard from '../components/ProductCard';
 import CategoryFilter from '../components/CategoryFilter';
 import { products, getProductsByCategory } from '../data/products';
@@ -46,9 +45,8 @@ const Products: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow py-10">
+    <Layout>
+      <div className="py-10">
         <div className="sport-container">
           <h1 className="text-3xl font-bold mb-8">Catalogue des produits</h1>
           
@@ -89,9 +87,8 @@ const Products: React.FC = () => {
             </div>
           )}
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+    </Layout>
   );
 };
 

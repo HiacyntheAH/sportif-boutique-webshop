@@ -1,32 +1,31 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Layout from '../components/Layout';
 import { getProductById } from '../data/products';
 import { 
   ChevronRight, 
   ShoppingCart, 
   Heart, 
   Share2, 
-  ShoppingBag, 
   TruckIcon,
   RefreshCw, 
   Shield,
   Minus, 
   Plus 
 } from 'lucide-react';
+import AlertMessage from '../components/ui/alert-message';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const product = getProductById(Number(id));
   const [quantity, setQuantity] = useState(1);
+  const [showAlert, setShowAlert] = useState(false);
   
   if (!product) {
     return (
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-grow flex items-center justify-center">
+      <Layout>
+        <div className="flex-grow flex items-center justify-center py-20">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">Produit non trouvé</h1>
             <p className="text-gray-600 mb-6">
@@ -36,9 +35,8 @@ const ProductDetail: React.FC = () => {
               Retour au catalogue
             </Link>
           </div>
-        </main>
-        <Footer />
-      </div>
+        </div>
+      </Layout>
     );
   }
   
@@ -55,14 +53,12 @@ const ProductDetail: React.FC = () => {
   };
   
   const addToCart = () => {
-    // Placeholder for cart functionality
-    alert(`${quantity} × ${product.name} ajouté au panier`);
+    setShowAlert(true);
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow py-10">
+    <Layout>
+      <div className="py-10">
         <div className="sport-container">
           {/* Breadcrumbs */}
           <nav className="flex text-sm text-gray-500 mb-8">
@@ -176,9 +172,16 @@ const ProductDetail: React.FC = () => {
             </div>
           </div>
         </div>
-      </main>
-      <Footer />
-    </div>
+      </div>
+      
+      {showAlert && (
+        <AlertMessage 
+          message={`${quantity} × ${product.name} ajouté au panier`}
+          type="success"
+          onClose={() => setShowAlert(false)}
+        />
+      )}
+    </Layout>
   );
 };
 

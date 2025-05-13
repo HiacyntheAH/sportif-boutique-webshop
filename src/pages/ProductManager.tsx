@@ -4,12 +4,22 @@ import DashboardSidebar from '../components/DashboardSidebar';
 import ProductForm from '../components/ProductForm';
 import { products, Product } from '../data/products';
 import { Edit, Trash2, Plus, Search } from 'lucide-react';
+import AlertMessage from '../components/ui/alert-message';
 
 const ProductManager: React.FC = () => {
   const [productsList, setProductsList] = useState<Product[]>(products);
   const [isAddingProduct, setIsAddingProduct] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [alertConfig, setAlertConfig] = useState<{
+    show: boolean;
+    message: string;
+    type: 'success' | 'error' | 'info' | 'warning';
+  }>({
+    show: false,
+    message: '',
+    type: 'success'
+  });
   
   const filteredProducts = productsList.filter(product => 
     product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,6 +34,12 @@ const ProductManager: React.FC = () => {
     
     setProductsList([...productsList, newProduct]);
     setIsAddingProduct(false);
+    
+    setAlertConfig({
+      show: true,
+      message: 'Produit ajouté avec succès',
+      type: 'success'
+    });
   };
   
   const handleUpdateProduct = (productData: Omit<Product, 'id'>) => {
@@ -36,11 +52,23 @@ const ProductManager: React.FC = () => {
     ));
     
     setEditingProduct(null);
+    
+    setAlertConfig({
+      show: true,
+      message: 'Produit mis à jour avec succès',
+      type: 'success'
+    });
   };
   
   const handleDeleteProduct = (productId: number) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
       setProductsList(productsList.filter(product => product.id !== productId));
+      
+      setAlertConfig({
+        show: true,
+        message: 'Produit supprimé avec succès',
+        type: 'info'
+      });
     }
   };
 
@@ -169,6 +197,14 @@ const ProductManager: React.FC = () => {
           )}
         </div>
       </div>
+      
+      {alertConfig.show && (
+        <AlertMessage 
+          message={alertConfig.message}
+          type={alertConfig.type}
+          onClose={() => setAlertConfig({ ...alertConfig, show: false })}
+        />
+      )}
     </div>
   );
 };
