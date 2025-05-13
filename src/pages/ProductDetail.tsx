@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '../components/Layout';
@@ -15,6 +14,7 @@ import {
   Plus 
 } from 'lucide-react';
 import AlertMessage from '../components/ui/alert-message';
+import { AspectRatio } from '../components/ui/aspect-ratio';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -76,11 +76,13 @@ const ProductDetail: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Product Image */}
             <div className="bg-white rounded-lg overflow-hidden border">
-              <img 
-                src={product.image} 
-                alt={product.name} 
-                className="w-full h-auto object-cover"
-              />
+              <AspectRatio ratio={4 / 3} className="bg-muted">
+                <img 
+                  src={product.image} 
+                  alt={product.name} 
+                  className="w-full h-full object-cover object-center"
+                />
+              </AspectRatio>
             </div>
             
             {/* Product Info */}

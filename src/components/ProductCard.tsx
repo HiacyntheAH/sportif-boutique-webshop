@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../data/products';
 import { ShoppingCart } from 'lucide-react';
+import { AspectRatio } from './ui/aspect-ratio';
 
 interface ProductCardProps {
   product: Product;
@@ -12,11 +13,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="product-card bg-white group">
       <Link to={`/product/${product.id}`}>
-        <img 
-          src={product.image} 
-          alt={product.name}
-          className="product-image"
-        />
+        <AspectRatio ratio={1 / 1} className="bg-muted">
+          <img 
+            src={product.image} 
+            alt={product.name}
+            className="product-image object-cover w-full h-full"
+          />
+        </AspectRatio>
       </Link>
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">

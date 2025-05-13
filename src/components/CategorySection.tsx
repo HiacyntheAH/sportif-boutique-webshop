@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AspectRatio } from './ui/aspect-ratio';
 
 const CategorySection: React.FC = () => {
   const categories = [
@@ -40,20 +41,22 @@ const CategorySection: React.FC = () => {
             <Link 
               key={category.id}
               to={`/products?category=${category.id}`}
-              className="group relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              className="group relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
-              {/* Image overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${category.color} mix-blend-multiply opacity-70 group-hover:opacity-80 transition-opacity`}></div>
-              
-              <img 
-                src={category.image} 
-                alt={category.name}
-                className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
-              />
-              
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">{category.name}</span>
-              </div>
+              <AspectRatio ratio={1 / 1} className="bg-muted">
+                {/* Image overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.color} mix-blend-multiply opacity-70 group-hover:opacity-80 transition-opacity z-10`}></div>
+                
+                <img 
+                  src={category.image} 
+                  alt={category.name}
+                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
+                />
+                
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <span className="text-white text-2xl font-bold">{category.name}</span>
+                </div>
+              </AspectRatio>
             </Link>
           ))}
         </div>

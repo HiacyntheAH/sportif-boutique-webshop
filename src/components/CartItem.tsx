@@ -2,6 +2,7 @@
 import React from 'react';
 import { Trash2, Minus, Plus } from 'lucide-react';
 import { Product } from '../data/products';
+import { AspectRatio } from './ui/aspect-ratio';
 
 interface CartItemProps {
   product: Product;
@@ -18,11 +19,15 @@ const CartItem: React.FC<CartItemProps> = ({
 }) => {
   return (
     <div className="flex items-center py-4 border-b">
-      <img 
-        src={product.image} 
-        alt={product.name} 
-        className="w-24 h-24 object-cover rounded"
-      />
+      <div className="w-24 h-24 overflow-hidden rounded">
+        <AspectRatio ratio={1 / 1} className="bg-muted">
+          <img 
+            src={product.image} 
+            alt={product.name} 
+            className="w-full h-full object-cover"
+          />
+        </AspectRatio>
+      </div>
       
       <div className="ml-4 flex-1">
         <h3 className="font-medium">{product.name}</h3>
