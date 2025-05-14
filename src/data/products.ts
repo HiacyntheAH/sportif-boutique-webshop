@@ -1,3 +1,4 @@
+
 export interface Product {
   id: number;
   name: string;
@@ -24,7 +25,7 @@ export const products: Product[] = [
     category: "basketball",
     price: 39.99,
     description: "Ballon de basketball avec une excellente prise en main et un rebond constant. Convient pour une utilisation en intérieur et en extérieur.",
-    image: "https://images.unsplash.com/photo-1546519638-68e109acd27d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 38
   },
   {
@@ -33,7 +34,7 @@ export const products: Product[] = [
     category: "tennis",
     price: 12.99,
     description: "Pack de 3 balles de tennis de haute qualité avec feutre durable et rebond uniforme. Approuvées pour les compétitions.",
-    image: "https://images.unsplash.com/photo-1595435934753-5f8c33516b68?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1595435934753-5f8c33516b68?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&height=400",
     stock: 120
   },
   {
@@ -78,7 +79,7 @@ export const products: Product[] = [
     category: "tennis",
     price: 119.99,
     description: "Chaussures de tennis avec un confort exceptionnel et une stabilité latérale. Semelle adaptée pour tous types de courts.",
-    image: "https://images.unsplash.com/photo-1620794085404-f1c34c3a16cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 22
   },
   {
@@ -87,7 +88,7 @@ export const products: Product[] = [
     category: "tennis",
     price: 199.99,
     description: "Raquette de tennis professionnelle offrant puissance et contrôle. Cadre en graphite pour une durabilité maximale.",
-    image: "https://images.unsplash.com/photo-1622279457486-28dc18b2585a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1617082610223-dea3e0afb7db?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 10
   },
   {
@@ -105,7 +106,7 @@ export const products: Product[] = [
     category: "clothing",
     price: 34.99,
     description: "Short de football léger et respirant avec une coupe ergonomique. Tissu qui évacue l'humidité pour rester au sec.",
-    image: "https://images.unsplash.com/photo-1515186913477-987d938ca6e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1581955957646-b8c270071fe2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 40
   },
   {

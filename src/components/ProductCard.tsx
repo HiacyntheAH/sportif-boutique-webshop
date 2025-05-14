@@ -11,13 +11,13 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="product-card bg-white group">
+    <div className="product-card bg-white group hover:shadow-lg transition-shadow duration-300">
       <Link to={`/product/${product.id}`}>
-        <AspectRatio ratio={1 / 1} className="bg-muted">
+        <AspectRatio ratio={1 / 1} className="bg-muted overflow-hidden">
           <img 
             src={product.image} 
             alt={product.name}
-            className="product-image object-cover w-full h-full"
+            className="product-image object-cover w-full h-full transform hover:scale-105 transition-transform duration-300"
             loading="lazy"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
