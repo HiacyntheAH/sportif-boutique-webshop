@@ -1,8 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../data/products';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ImageOff } from 'lucide-react';
 import { AspectRatio } from './ui/aspect-ratio';
 
 interface ProductCardProps {
@@ -10,22 +10,32 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const [imageError, setImageError] = useState(false);
+  const placeholderUrl = "https://placehold.co/400x400/e2e8f0/64748b?text=Image+non+disponible";
+
   return (
     <div className="product-card bg-white group hover:shadow-lg transition-shadow duration-300">
       <Link to={`/product/${product.id}`}>
         <AspectRatio ratio={1 / 1} className="bg-muted overflow-hidden">
-          <img 
-            src={product.image} 
-            alt={product.name}
-            className="product-image object-cover w-full h-full transform hover:scale-105 transition-transform duration-300"
-            loading="lazy"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              console.error(`Error loading image: ${target.src}`);
-              // Fallback to placeholder if image fails to load
-              target.src = "https://placehold.co/400x400/e2e8f0/64748b?text=Image+non+disponible";
-            }}
-          />
+          {imageError ? (
+            <div className="w-full h-full flex items-center justify-center bg-gray-100">
+              <div className="text-center p-4">
+                <ImageOff className="mx-auto h-10 w-10 text-gray-400" />
+                <p className="mt-2 text-sm text-gray-500">Image non disponible</p>
+              </div>
+            </div>
+          ) : (
+            <img 
+              src={product.image} 
+              alt={product.name}
+              className="product-image object-cover w-full h-full transform hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              onError={(e) => {
+                console.error(`Error loading image for ${product.name}: ${product.image}`);
+                setImageError(true);
+              }}
+            />
+          )}
         </AspectRatio>
       </Link>
       <div className="p-4">

@@ -34,7 +34,7 @@ export const products: Product[] = [
     category: "tennis",
     price: 12.99,
     description: "Pack de 3 balles de tennis de haute qualité avec feutre durable et rebond uniforme. Approuvées pour les compétitions.",
-    image: "https://images.unsplash.com/photo-1595435934753-5f8c33516b68?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&height=400",
+    image: "https://images.unsplash.com/photo-1592709823125-a191f07a2a5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 120
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     category: "clothing",
     price: 69.99,
     description: "Maillot de basketball professionnel avec technologie d'évacuation de l'humidité. Coupe athlétique pour une liberté de mouvement maximale.",
-    image: "https://images.unsplash.com/photo-1519861531473-9200262188bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1574634534894-89d7576c8259?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 32
   },
   {
@@ -106,7 +106,7 @@ export const products: Product[] = [
     category: "clothing",
     price: 34.99,
     description: "Short de football léger et respirant avec une coupe ergonomique. Tissu qui évacue l'humidité pour rester au sec.",
-    image: "https://images.unsplash.com/photo-1581955957646-b8c270071fe2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1562751362-404243c2eea3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     stock: 40
   },
   {
